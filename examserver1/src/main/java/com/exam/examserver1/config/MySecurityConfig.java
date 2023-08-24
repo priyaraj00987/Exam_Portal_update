@@ -1,6 +1,6 @@
 package com.exam.examserver1.config;
 
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.exam.examserver1.model.JwtRequest;
 import com.exam.examserver1.model.JwtResponse;
 import com.exam.examserver1.service.impl.UserDetailsServiceImpl;
@@ -30,10 +30,12 @@ import javax.servlet.Filter;
 public class MySecurityConfig {
     @Autowired
     private  JwtAuthencationEntryPoint unauthorizedHandler;
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
 @Autowired
@@ -48,6 +50,7 @@ private JwtAuthencationFilter jwtAuthenticationFilter;
 
         return authProvider;
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();

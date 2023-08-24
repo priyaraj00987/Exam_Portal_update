@@ -4,6 +4,7 @@ import com.exam.examserver1.model.UserRole;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,7 +13,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 @Data
-@AllArgsConstructor
+
+@NoArgsConstructor
+
 @Entity
 @Table(name = "users")
 public class User implements UserDetails {
@@ -22,33 +25,33 @@ public class User implements UserDetails {
     private int id;
     private String username;
     private String password;
-    private String firstname;
+   // private String firstname;
+    private  String firstname;
     private String lastname;
     private String email;
     private String phone;
     private boolean enable=true;
     private String profile;
 
-    public User() {
 
-    }
 
     @OneToMany(cascade = CascadeType.ALL,fetch=FetchType.EAGER,mappedBy = "user")
     @JsonIgnore
     private Set<UserRole> UserRoles=new HashSet<>();
-
-    public User(int id, String username, String password, String firstname, String lastname, String email, String phone, boolean enable, String profile) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.email = email;
-        this.phone = phone;
-        this.enable = enable;
-        this.profile = profile;
-    }
-
+//
+//    public User(int id, String username, String password, String firstname,  String fname ,String lastname, String email, String phone, boolean enable, String profile) {
+//        this.id = id;
+//        this.username = username;
+//        this.password = password;
+//        this.firstname = firstname;
+//        this.lastname = lastname;
+//        this.email = email;
+//        this.phone = phone;
+//        this.enable = enable;
+//        this.profile = profile;
+//        this.fname=fname;
+//    }
+//
 
     public Set<UserRole> getUserRoles() {
         return UserRoles;
