@@ -1,5 +1,6 @@
 package com.exam.examserver1.model.exam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,7 @@ public class Question {
     private String option3;
     private String option4;
 
-
+    @JsonIgnore
     private String answer;
 
     @Transient

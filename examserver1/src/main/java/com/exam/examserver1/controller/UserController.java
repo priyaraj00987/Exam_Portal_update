@@ -20,11 +20,18 @@ import java.util.Set;
 @CrossOrigin("*")
 public class UserController {
 
+
     @Autowired
 private  UserService userService;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @GetMapping("/test")
+    public String test(){
+        return  "welcome to backend api of examportal";
+    }
+
     @PostMapping("/")
     public  User createUser(@RequestBody User user) throws Exception {
         user.setProfile("default.png");

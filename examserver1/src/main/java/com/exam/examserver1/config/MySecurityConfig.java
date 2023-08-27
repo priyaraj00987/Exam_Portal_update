@@ -64,7 +64,7 @@ private JwtAuthencationFilter jwtAuthenticationFilter;
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/generate-token","/user/").permitAll()
+                .authorizeRequests().antMatchers("/generate-token","/user/","/user/test").permitAll()
                 .anyRequest().authenticated();
 
         http.authenticationProvider(authenticationProvider());
